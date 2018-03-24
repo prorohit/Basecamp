@@ -8,10 +8,8 @@
 
 import UIKit
 
-class CustomNewFolderCell: UICollectionViewCell {
+class CustomDocFolderCell: UICollectionViewCell {
     
-    @IBOutlet weak var textFieldFolderName: UITextField!
-    @IBOutlet weak var btnCancel: UIButton!
-    @IBOutlet weak var btnOkay: UIButton!
+    @IBOutlet weak var labelFolderName: UILabel!
     @IBOutlet weak var imageViewFolder: UIImageView!
 }

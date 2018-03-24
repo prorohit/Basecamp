@@ -154,6 +154,5 @@ class Utility: NSObject {
             print("Error: \(error.localizedDescription)")
         }
     }
-    
-    
+
 }

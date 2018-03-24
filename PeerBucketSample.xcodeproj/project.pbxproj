@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		153DBEB22CD8136DC4BC9599 /* Pods_PeerBucketSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608C789048B41930551ACF4B /* Pods_PeerBucketSample.framework */; };
+		8172B4CD2066A29300AB1DA6 /* CustomNewFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172B4CC2066A29100AB1DA6 /* CustomNewFolderCell.swift */; };
 		819EFAAA205B997100BE9CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819EFAA9205B997100BE9CFF /* AppDelegate.swift */; };
 		819EFAB1205B997100BE9CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 819EFAB0205B997100BE9CFF /* Assets.xcassets */; };
 		819EFAB4205B997100BE9CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 819EFAB2205B997100BE9CFF /* LaunchScreen.storyboard */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		04A7A478775DEED766EF7A1D /* Pods-PeerBucketSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeerBucketSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerBucketSample/Pods-PeerBucketSample.release.xcconfig"; sourceTree = "<group>"; };
 		608C789048B41930551ACF4B /* Pods_PeerBucketSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerBucketSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8172B4CC2066A29100AB1DA6 /* CustomNewFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNewFolderCell.swift; sourceTree = "<group>"; };
 		819EFAA6205B997100BE9CFF /* PeerBucketSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeerBucketSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EFAA9205B997100BE9CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		819EFAB0205B997100BE9CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		81AA1538205C07A900F1F80F /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				8172B4CC2066A29100AB1DA6 /* CustomNewFolderCell.swift */,
 				81AEA95A205F6C4E00967FFA /* CollectionFooterReusableView.swift */,
 				81AA153B205C07DC00F1F80F /* CustomDocFolderCell.swift */,
 				81AA1539205C07C400F1F80F /* CustomDocFileCell.swift */,
@@ -441,6 +444,7 @@
 				81AA1533205C059400F1F80F /* DocsHomeVC.swift in Sources */,
 				81AA1552205D3CEE00F1F80F /* SelectedFileVC.swift in Sources */,
 				81AA153E205C08BB00F1F80F /* DocsHomeVC+UICollectionView.swift in Sources */,
+				8172B4CD2066A29300AB1DA6 /* CustomNewFolderCell.swift in Sources */,
 				819EFAC4205B9D0400BE9CFF /* NetworkManager.swift in Sources */,
 				81AEA9622060C23400967FFA /* FileManagerHelper.swift in Sources */,
 			);

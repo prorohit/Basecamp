@@ -35,24 +35,7 @@ class DocsHomeVC: BaseVC {
     }
     
     @objc func methodOfReceivedNotification (_ noti: Notification) {
-        weak var weakSelf = self
-        offset = 0
-        viewModelDocsHome.arrOfDocFilesFolders.removeAll()
-        viewModelDocsHome.isLoadMore = false
-        viewModelDocsHome.getDocs(withUserId: userId ?? "", userType: userType ?? "", company_id: company_id ?? "", type: type ?? "",
-                                  project_team_id: project_team_id ?? "", parent_id: parent_id ?? "", limit: limit ?? "0", offset: "\(offset)", isLoadMore: viewModelDocsHome.isLoadMore ) {
-                                    DispatchQueue.main.async {
-                                        weakSelf?.collectionViewDocsAndFolder.reloadData()
-                                        if let loadMore = (weakSelf?.viewModelDocsHome.isLoadMore), loadMore == true {
-                                            if let count = weakSelf?.offset {
-                                                let increased = count + 1
-                                                weakSelf?.offset = increased
-                                            }
-                                        }
-                                    }
-        }
-    
-        
+       callGetFilesFoldersAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +49,25 @@ class DocsHomeVC: BaseVC {
                                   project_team_id: project_team_id ?? "", parent_id: parent_id ?? "", limit: limit ?? "0", offset: "\(offset)", isLoadMore: viewModelDocsHome.isLoadMore ) {
                                     DispatchQueue.main.async {
                                         weakSelf?.settingScrollingStringTitle()
+                                        weakSelf?.collectionViewDocsAndFolder.reloadData()
+                                        if let loadMore = (weakSelf?.viewModelDocsHome.isLoadMore), loadMore == true {
+                                            if let count = weakSelf?.offset {
+                                                let increased = count + 1
+                                                weakSelf?.offset = increased
+                                            }
+                                        }
+                                    }
+        }
+    }
+    
+    func callGetFilesFoldersAPI() {
+        weak var weakSelf = self
+        offset = 0
+        viewModelDocsHome.arrOfDocFilesFolders.removeAll()
+        viewModelDocsHome.isLoadMore = false
+        viewModelDocsHome.getDocs(withUserId: userId ?? "", userType: userType ?? "", company_id: company_id ?? "", type: type ?? "",
+                                  project_team_id: project_team_id ?? "", parent_id: parent_id ?? "", limit: limit ?? "0", offset: "\(offset)", isLoadMore: viewModelDocsHome.isLoadMore ) {
+                                    DispatchQueue.main.async {
                                         weakSelf?.collectionViewDocsAndFolder.reloadData()
                                         if let loadMore = (weakSelf?.viewModelDocsHome.isLoadMore), loadMore == true {
                                             if let count = weakSelf?.offset {
@@ -162,7 +164,10 @@ class DocsHomeVC: BaseVC {
     }
     
     override func sendCallBackOnTopItemClicked(_: UIButton) {
-        print("Make a folder button clicked")
+        let model = DocsHomeModel(document_title: "Untitled", thumb: "", parent_id: "", company_id: "", content_type: "", url: "", user_id: "", created_at: "", size: "", updated_at: "", ext: "", doc_type: "folder_new", name_on_disk: "", document_id: "", document_description: "", project_team_id: "", status: "")
+        viewModelDocsHome.arrOfDocFilesFolders.insert(model, at: 0)
+        collectionViewDocsAndFolder.reloadData()
+        return
     }
    
 

@@ -43,14 +43,15 @@ class DocsHomeViewModel: NSObject {
                       "offset": offset]
         
         let finalURL = DEVSERVERBASEURL + APIEndPoints.GETCARDS.rawValue
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6InBlZXJidWNrZXQifQ.VFpyg8qiBasCFTBU9IttVeiuibns5lJorSRCetFWGw8"
+        let headers = BaseVC.getHeaders()
+        
         if NetworkManager.sharedInstance.isInternetAvailable() {
             if isLoadMore == false {
             DispatchQueue.main.async {
                 SVProgressHUD.show(withStatus: PLEASEWAIT)
                 }
             }
-            NetworkManager.sharedInstance.makeFormEncodedAlamofireRequestWithEndpint(finalURL, methodName: NetworkManager.APIMETHOD.POST.rawValue, headers: ["token": token], params: params as [String : AnyObject], completionHandler: { (response, error) in
+            NetworkManager.sharedInstance.makeFormEncodedAlamofireRequestWithEndpint(finalURL, methodName: NetworkManager.APIMETHOD.POST.rawValue, headers: headers, params: params as [String : AnyObject], completionHandler: { (response, error) in
                 DispatchQueue.main.async {
                     if error == nil {
                         print(response!)

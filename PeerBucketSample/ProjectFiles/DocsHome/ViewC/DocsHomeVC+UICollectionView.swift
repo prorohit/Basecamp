@@ -10,6 +10,8 @@ import UIKit
 import Kingfisher
 private let kCellIdentifileForFileCell = "cell_file"
 private let kCellIdentifolderForFileCell = "cell_folder"
+private let kCellIdentifolderNewForFileCell = "cell_folder_new"
+
 
 extension DocsHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout   {
     
@@ -24,10 +26,19 @@ extension DocsHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         guard let cellFolder = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifolderForFileCell, for: indexPath) as? CustomDocFolderCell else {
             return UICollectionViewCell()
         }
+        guard let cellFolderNew = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifolderNewForFileCell, for: indexPath) as? CustomNewFolderCell else {
+            return UICollectionViewCell()
+        }
         let model = viewModelDocsHome.getDocModelDetailAtIndexPath(index: indexPath.item)
         if model.doc_type == "folder" {
             cellFolder.labelFolderName.text = model.document_title
             return cellFolder
+        } else if model.doc_type == "folder_new" {
+            cellFolderNew.textFieldFolderName.text = model.document_title
+            cellFolderNew.textFieldFolderName.becomeFirstResponder()
+            cellFolderNew.btnOkay.addTarget(self, action: #selector(tapSaveFolder(_:)), for: UIControlEvents.touchUpInside)
+            cellFolderNew.btnCancel.addTarget(self, action: #selector(tapCancelSaveFolder(_:)), for: UIControlEvents.touchUpInside)
+            return cellFolderNew
         } else {
             cellFile.labelFileName.text = model.document_title
             
@@ -102,6 +113,37 @@ extension DocsHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
       
         return reusableView!
+    }
+    
+    @objc func tapSaveFolder(_ sender: UIButton) {
+        weak var weakSelf = self
+        let buttonPosition = sender.convert(CGPoint.zero, to: collectionViewDocsAndFolder)
+        guard let indexPath = collectionViewDocsAndFolder.indexPathForItem(at: buttonPosition) else { return }
+        guard let cell = collectionViewDocsAndFolder.cellForItem(at: indexPath) as? CustomNewFolderCell else { return }
+        let folderName = cell.textFieldFolderName.text
+        guard let finalName = folderName?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        if finalName.count > 0 {
+            // call web api
+//            print(folderName)
+            let params = ["user_id" : userId ?? "",
+                          "userType": userType ?? "",
+                          "company_id": company_id ?? "",
+                          "title": finalName,
+                          "project_team_id": project_team_id ?? "",
+                          "parent_id": parent_id ?? ""]
+            createFolder(dictParams: params) { (response) in
+                if response != nil {
+                    weakSelf?.callGetFilesFoldersAPI()
+                }
+            }
+        } else {
+            Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: "Please enter folder name.")
+        }
+        
+    }
+    @objc func tapCancelSaveFolder(_ sender: UIButton){
+        viewModelDocsHome.arrOfDocFilesFolders.remove(at: 0)
+        collectionViewDocsAndFolder.reloadData()
     }
     
 }

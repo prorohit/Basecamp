@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BaseVC: UIViewController, PopViewOptionClickedProtocol {
 
@@ -86,6 +87,10 @@ class BaseVC: UIViewController, PopViewOptionClickedProtocol {
     func sendCallBackOnBottomItemClicked(_: UIButton) {
         
     }
+    
+    class func getHeaders() -> [String: String] {
+        return ["token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6InBlZXJidWNrZXQifQ.VFpyg8qiBasCFTBU9IttVeiuibns5lJorSRCetFWGw8"]
+    }
 }
 
 extension BaseVC: UIPopoverPresentationControllerDelegate {
@@ -110,3 +115,40 @@ extension BaseVC: UIPopoverPresentationControllerDelegate {
         }
     }
 }
+
+extension BaseVC {
+    func createFolder(dictParams: [String: String],
+                      completionHandler: @escaping (([String: Any]?) -> Void)) {
+//        weak var weakSelf = self
+        
+        if NetworkManager.sharedInstance.isInternetAvailable() {
+            let finalURL = DEVSERVERBASEURL + APIEndPoints.CREATEFOLDER.rawValue
+            let headers = BaseVC.getHeaders()
+            DispatchQueue.main.async {
+                SVProgressHUD.show(withStatus: PLEASEWAIT)
+            }
+            
+            NetworkManager.sharedInstance.makeFormEncodedAlamofireRequestWithEndpint(finalURL, methodName: NetworkManager.APIMETHOD.POST.rawValue, headers: headers, params: dictParams as [String : AnyObject], completionHandler: { (response, error) in
+                
+                DispatchQueue.main.async {
+                    if error != nil {
+                        Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: error.debugDescription)
+                        completionHandler(nil)
+                    } else {
+                        completionHandler(response)
+                    }
+                }
+               
+                
+            })
+        
+
+        } else {
+            Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: INTERNETCONNECTIVITY)
+
+        }
+    }
+}
+
+
+
