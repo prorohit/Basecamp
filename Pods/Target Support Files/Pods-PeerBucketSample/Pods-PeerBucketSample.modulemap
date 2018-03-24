@@ -1,0 +1,6 @@
+framework module Pods_PeerBucketSample {
+  umbrella header "Pods-PeerBucketSample-umbrella.h"
+
+  export *
+  module * { export * }
+}
