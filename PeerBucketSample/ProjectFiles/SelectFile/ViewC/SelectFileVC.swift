@@ -61,6 +61,12 @@ final class SelectFileVC: BaseVC {
     }
     
     @IBAction func tapFileButton(_ sender: UIButton) {
+        guard let obj = ChooseFileVC.loadViewController() else { return }
+        let navC = UINavigationController(rootViewController: obj)
+        navC.barTintColor = UIColor(red: 86 / 255.0, green: 189 / 255.0, blue: 137 / 255.0, alpha: 1.0)
+
+        present(navC, animated: true, completion: nil)
+//        navigationController?.pushViewController(obj, animated: true)
     }
     
     @IBAction func tapCrossButton(_ sender: UIButton) {

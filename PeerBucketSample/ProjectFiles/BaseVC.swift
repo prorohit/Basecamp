@@ -119,7 +119,6 @@ extension BaseVC: UIPopoverPresentationControllerDelegate {
 extension BaseVC {
     func createFolder(dictParams: [String: String],
                       completionHandler: @escaping (([String: Any]?) -> Void)) {
-//        weak var weakSelf = self
         
         if NetworkManager.sharedInstance.isInternetAvailable() {
             let finalURL = DEVSERVERBASEURL + APIEndPoints.CREATEFOLDER.rawValue
@@ -138,11 +137,7 @@ extension BaseVC {
                         completionHandler(response)
                     }
                 }
-               
-                
             })
-        
-
         } else {
             Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: INTERNETCONNECTIVITY)
 

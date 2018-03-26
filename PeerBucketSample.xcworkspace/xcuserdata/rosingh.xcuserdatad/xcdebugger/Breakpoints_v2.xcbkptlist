@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeerBucketSample/HelperFiles/FileManagerHelper.swift"
-            timestampString = "543599167.933175"
+            timestampString = "543729683.660911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeerBucketSample/HelperFiles/FileManagerHelper.swift"
-            timestampString = "543599167.933524"
+            timestampString = "543729683.661226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -74,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeerBucketSample/ProjectFiles/SelectFile/ViewC/SelectFileVC+UIImagePicker.swift"
-            timestampString = "543599167.933774"
+            timestampString = "543729683.6614389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PeerBucketSample/ProjectFiles/ChooseFiles/ViewC/ChooseFileVC.swift"
+            timestampString = "543729683.661678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "tapPDFButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

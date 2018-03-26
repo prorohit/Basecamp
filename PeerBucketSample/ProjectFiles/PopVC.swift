@@ -26,7 +26,6 @@ class PopVC: BaseVC {
     }
     @IBAction func tapBottomButton(_ sender: AnyObject) {
         delegatePopViewC?.sendCallBackOnBottomItemClicked(sender as! UIButton)
-
         dismiss(animated: true, completion: nil)
     }
 }

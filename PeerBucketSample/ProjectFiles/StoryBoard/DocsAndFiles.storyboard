@@ -551,6 +551,150 @@
             </objects>
             <point key="canvasLocation" x="1919.2" y="116.49175412293854"/>
         </scene>
+        <!--Choose FileVC-->
+        <scene sceneID="v3j-SV-czD">
+            <objects>
+                <viewController storyboardIdentifier="ChooseFileVC" automaticallyAdjustsScrollViewInsets="NO" id="7qj-kC-ehM" customClass="ChooseFileVC" customModule="PeerBucketSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J1g-aw-JI9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AXq-PG-q9d">
+                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="2iw-Tq-P6s" customClass="CustomChooseFileTableViewCell" customModule="PeerBucketSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2iw-Tq-P6s" id="c0M-GM-dqr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qqm-fs-c82">
+                                                    <rect key="frame" x="13" y="5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="Eo4-Hg-e86"/>
+                                                        <constraint firstAttribute="height" constant="70" id="HzF-QC-248"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPt-o7-N61">
+                                                    <rect key="frame" x="99" y="17" width="261" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wff-fI-93k">
+                                                    <rect key="frame" x="99" y="48.5" width="261" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qqm-fs-c82" firstAttribute="centerY" secondItem="c0M-GM-dqr" secondAttribute="centerY" id="0cB-Yi-FuF"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wff-fI-93k" secondAttribute="bottom" constant="10.5" id="JIq-9b-PYe"/>
+                                                <constraint firstItem="qqm-fs-c82" firstAttribute="leading" secondItem="c0M-GM-dqr" secondAttribute="leading" constant="13" id="Rew-2N-JSH"/>
+                                                <constraint firstItem="Wff-fI-93k" firstAttribute="leading" secondItem="qqm-fs-c82" secondAttribute="trailing" constant="16" id="W5s-u2-o3t"/>
+                                                <constraint firstItem="FPt-o7-N61" firstAttribute="top" secondItem="c0M-GM-dqr" secondAttribute="top" constant="17" id="ngm-wK-kVb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wff-fI-93k" secondAttribute="trailing" constant="15" id="odE-sV-hdV"/>
+                                                <constraint firstAttribute="trailing" secondItem="FPt-o7-N61" secondAttribute="trailing" constant="15" id="pPN-ef-400"/>
+                                                <constraint firstItem="FPt-o7-N61" firstAttribute="leading" secondItem="qqm-fs-c82" secondAttribute="trailing" constant="16" id="v2l-s6-RxA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageViewFileIcon" destination="qqm-fs-c82" id="2Iy-Cx-EkF"/>
+                                            <outlet property="labelFileName" destination="FPt-o7-N61" id="0up-ck-7Xx"/>
+                                            <outlet property="labelFileSize" destination="Wff-fI-93k" id="HTA-lI-a7m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-w1-XHG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brt-pr-JOR">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="PDF">
+                                            <color key="titleColor" red="0.062745098040000002" green="0.1019607843" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPDFButton:" destination="7qj-kC-ehM" eventType="touchUpInside" id="ZBp-E5-ad8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhg-Fk-rbV">
+                                        <rect key="frame" x="76" y="0.0" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="DOC">
+                                            <color key="titleColor" red="0.062745098040000002" green="0.1019607843" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapDOCButton:" destination="7qj-kC-ehM" eventType="touchUpInside" id="yWi-9X-6IT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwx-Ke-Ceu">
+                                        <rect key="frame" x="152" y="0.0" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="PPT">
+                                            <color key="titleColor" red="0.062745098040000002" green="0.1019607843" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPPTButton:" destination="7qj-kC-ehM" eventType="touchUpInside" id="34g-7g-hJ7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-OU-GP2">
+                                        <rect key="frame" x="228" y="0.0" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="XLS">
+                                            <color key="titleColor" red="0.062745098040000002" green="0.1019607843" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapXLSButton:" destination="7qj-kC-ehM" eventType="touchUpInside" id="fZi-e6-rn2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dn-6C-nhb">
+                                        <rect key="frame" x="304" y="0.0" width="71" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="TXT">
+                                            <color key="titleColor" red="0.062745098040000002" green="0.1019607843" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapTXTButton:" destination="7qj-kC-ehM" eventType="touchUpInside" id="WWm-op-EXL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="qSc-Sh-9Do"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="c1g-w1-XHG" firstAttribute="top" secondItem="iIo-ka-m2v" secondAttribute="top" id="9aD-hq-EZ4"/>
+                            <constraint firstItem="iIo-ka-m2v" firstAttribute="top" secondItem="AXq-PG-q9d" secondAttribute="top" constant="-53" id="IHX-Su-Oic"/>
+                            <constraint firstItem="iIo-ka-m2v" firstAttribute="trailing" secondItem="AXq-PG-q9d" secondAttribute="trailing" id="Lla-qf-tZa"/>
+                            <constraint firstItem="AXq-PG-q9d" firstAttribute="leading" secondItem="iIo-ka-m2v" secondAttribute="leading" id="VCe-OK-uFy"/>
+                            <constraint firstItem="iIo-ka-m2v" firstAttribute="bottom" secondItem="AXq-PG-q9d" secondAttribute="bottom" id="bvZ-zl-yas"/>
+                            <constraint firstItem="iIo-ka-m2v" firstAttribute="trailing" secondItem="c1g-w1-XHG" secondAttribute="trailing" id="qWe-3b-EIy"/>
+                            <constraint firstItem="c1g-w1-XHG" firstAttribute="leading" secondItem="iIo-ka-m2v" secondAttribute="leading" id="v4l-Cb-qDt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iIo-ka-m2v"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnDOC" destination="jhg-Fk-rbV" id="I52-3g-fqt"/>
+                        <outlet property="btnPDF" destination="brt-pr-JOR" id="Tmr-Pz-Ucf"/>
+                        <outlet property="btnPPT" destination="jwx-Ke-Ceu" id="tRw-ZT-GeS"/>
+                        <outlet property="btnTXT" destination="9Dn-6C-nhb" id="0zL-lQ-nPy"/>
+                        <outlet property="btnXLS" destination="0eL-OU-GP2" id="uWt-Zk-U4o"/>
+                        <outlet property="tableViewDocs" destination="AXq-PG-q9d" id="p4v-IS-7re"/>
+                        <outlet property="viewModelChooseFile" destination="Bkr-as-ifZ" id="tzD-so-mxh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZF-My-Zvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Bkr-as-ifZ" customClass="ChooseFileViewModel" customModule="PeerBucketSample" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="1920.8" y="806.44677661169419"/>
+        </scene>
         <!--Select FileVC-->
         <scene sceneID="Kk0-Hv-stt">
             <objects>

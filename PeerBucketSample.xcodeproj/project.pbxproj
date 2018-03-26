@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		153DBEB22CD8136DC4BC9599 /* Pods_PeerBucketSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608C789048B41930551ACF4B /* Pods_PeerBucketSample.framework */; };
 		8172B4CD2066A29300AB1DA6 /* CustomNewFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172B4CC2066A29100AB1DA6 /* CustomNewFolderCell.swift */; };
+		819671882066B1B300F7D796 /* ChooseFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819671832066B1B200F7D796 /* ChooseFileViewModel.swift */; };
+		819671892066B1B300F7D796 /* ChooseFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819671852066B1B200F7D796 /* ChooseFileVC.swift */; };
+		8196718A2066B1B300F7D796 /* ChooseFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819671872066B1B200F7D796 /* ChooseFileModel.swift */; };
+		8196718C2066BB0E00F7D796 /* ChooseFileVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196718B2066BB0E00F7D796 /* ChooseFileVC+UITableView.swift */; };
+		8196718E2067544D00F7D796 /* CustomChooseFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196718D2067544D00F7D796 /* CustomChooseFileTableViewCell.swift */; };
 		819EFAAA205B997100BE9CFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819EFAA9205B997100BE9CFF /* AppDelegate.swift */; };
 		819EFAB1205B997100BE9CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 819EFAB0205B997100BE9CFF /* Assets.xcassets */; };
 		819EFAB4205B997100BE9CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 819EFAB2205B997100BE9CFF /* LaunchScreen.storyboard */; };
@@ -42,6 +47,11 @@
 		04A7A478775DEED766EF7A1D /* Pods-PeerBucketSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeerBucketSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeerBucketSample/Pods-PeerBucketSample.release.xcconfig"; sourceTree = "<group>"; };
 		608C789048B41930551ACF4B /* Pods_PeerBucketSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeerBucketSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8172B4CC2066A29100AB1DA6 /* CustomNewFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNewFolderCell.swift; sourceTree = "<group>"; };
+		819671832066B1B200F7D796 /* ChooseFileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileViewModel.swift; sourceTree = "<group>"; };
+		819671852066B1B200F7D796 /* ChooseFileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileVC.swift; sourceTree = "<group>"; };
+		819671872066B1B200F7D796 /* ChooseFileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileModel.swift; sourceTree = "<group>"; };
+		8196718B2066BB0E00F7D796 /* ChooseFileVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChooseFileVC+UITableView.swift"; sourceTree = "<group>"; };
+		8196718D2067544D00F7D796 /* CustomChooseFileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChooseFileTableViewCell.swift; sourceTree = "<group>"; };
 		819EFAA6205B997100BE9CFF /* PeerBucketSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeerBucketSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		819EFAA9205B997100BE9CFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		819EFAB0205B997100BE9CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +105,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		819671812066B1B200F7D796 /* ChooseFiles */ = {
+			isa = PBXGroup;
+			children = (
+				819671822066B1B200F7D796 /* ViewModel */,
+				819671842066B1B200F7D796 /* ViewC */,
+				819671862066B1B200F7D796 /* Model */,
+			);
+			path = ChooseFiles;
+			sourceTree = "<group>";
+		};
+		819671822066B1B200F7D796 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				819671832066B1B200F7D796 /* ChooseFileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		819671842066B1B200F7D796 /* ViewC */ = {
+			isa = PBXGroup;
+			children = (
+				819671852066B1B200F7D796 /* ChooseFileVC.swift */,
+				8196718B2066BB0E00F7D796 /* ChooseFileVC+UITableView.swift */,
+				8196718D2067544D00F7D796 /* CustomChooseFileTableViewCell.swift */,
+			);
+			path = ViewC;
+			sourceTree = "<group>";
+		};
+		819671862066B1B200F7D796 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				819671872066B1B200F7D796 /* ChooseFileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		819EFA9D205B997100BE9CFF = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +187,7 @@
 		81AA1525205C04F400F1F80F /* ProjectFiles */ = {
 			isa = PBXGroup;
 			children = (
+				819671812066B1B200F7D796 /* ChooseFiles */,
 				81AEA95C205F6C9600967FFA /* StoryBoard */,
 				81AA154D205D3CD700F1F80F /* SelectedFile */,
 				81AA1541205D352B00F1F80F /* SelectFile */,
@@ -423,15 +470,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8196718A2066B1B300F7D796 /* ChooseFileModel.swift in Sources */,
 				819EFAC5205B9D0400BE9CFF /* Utility.swift in Sources */,
 				81AA154A205D354B00F1F80F /* SelectFileModel.swift in Sources */,
 				81AA153C205C07DC00F1F80F /* CustomDocFolderCell.swift in Sources */,
 				81AA1537205C05C400F1F80F /* DocsHomeModel.swift in Sources */,
 				81AA154C205D357A00F1F80F /* SelectFileVC+UIImagePicker.swift in Sources */,
+				819671892066B1B300F7D796 /* ChooseFileVC.swift in Sources */,
 				81AA153A205C07C400F1F80F /* CustomDocFileCell.swift in Sources */,
 				819EFAAA205B997100BE9CFF /* AppDelegate.swift in Sources */,
 				81AA1556205D3D1600F1F80F /* SelectedFileViewModel.swift in Sources */,
 				81AA152A205C04F400F1F80F /* BaseVC.swift in Sources */,
+				8196718C2066BB0E00F7D796 /* ChooseFileVC+UITableView.swift in Sources */,
 				81AEA95B205F6C4E00967FFA /* CollectionFooterReusableView.swift in Sources */,
 				81AA152D205C04F400F1F80F /* PopVC.swift in Sources */,
 				81AA1535205C05A600F1F80F /* DocsHomeViewModel.swift in Sources */,
@@ -439,7 +489,9 @@
 				81AA1546205D352B00F1F80F /* SelectFileVC.swift in Sources */,
 				81AA1554205D3D0100F1F80F /* SelectedFileModel.swift in Sources */,
 				819EFAC3205B9D0400BE9CFF /* APIEndPoints.swift in Sources */,
+				819671882066B1B300F7D796 /* ChooseFileViewModel.swift in Sources */,
 				81AEA9642060CB0400967FFA /* DocsFilesConstants.swift in Sources */,
+				8196718E2067544D00F7D796 /* CustomChooseFileTableViewCell.swift in Sources */,
 				81AA152C205C04F400F1F80F /* HomeViewController.swift in Sources */,
 				81AA1533205C059400F1F80F /* DocsHomeVC.swift in Sources */,
 				81AA1552205D3CEE00F1F80F /* SelectedFileVC.swift in Sources */,

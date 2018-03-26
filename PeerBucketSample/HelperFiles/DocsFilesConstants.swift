@@ -28,3 +28,11 @@ enum DOCUMENTDIRECTORYFOLDERNAME: String {
     case DOWNLOADS = "downloads"
     case UPLOADS = "uploads"
 }
+
+enum DOCFILETYPE: String {
+    case PDF = "pdf"
+    case DOC = "doc"
+    case XLS = "xls"
+    case PPT = "ppt"
+    case TEXT = "txt"
+}

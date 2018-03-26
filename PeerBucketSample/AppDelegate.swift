@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        FileManagerHelper.deleteAllFilesInDocumentDirectory()
         Utility.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
-        saveImageDocumentDirectory()
+        Utility.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.DOWNLOADS.rawValue)
+
+//        saveImageDocumentDirectory()
         return true
     }
     
