@@ -14,7 +14,7 @@ final class SelectFileVC: BaseVC {
     private static let kSTORYBOARDNAME = "DocsAndFiles"
     var arrOfImages:[UIImage] = [UIImage]()
     var userId: String?, userType: String?, company_id: String?, type: String?, project_team_id: String?, parent_id: String?
-
+   
 
     lazy var backdropView: UIView = {
         let bdView = UIView(frame: self.view.bounds)
@@ -61,12 +61,57 @@ final class SelectFileVC: BaseVC {
     }
     
     @IBAction func tapFileButton(_ sender: UIButton) {
-        guard let obj = ChooseFileVC.loadViewController() else { return }
-        let navC = UINavigationController(rootViewController: obj)
+        weak var weakSelf = self
+        guard let objChoose = ChooseFileVC.loadViewController() else { return }
+        let navC = UINavigationController(rootViewController: objChoose)
         navC.barTintColor = UIColor(red: 86 / 255.0, green: 189 / 255.0, blue: 137 / 255.0, alpha: 1.0)
-
         present(navC, animated: true, completion: nil)
-//        navigationController?.pushViewController(obj, animated: true)
+        
+        objChoose.sendCallBackWithDictionary { (dict) in
+            /*
+             ["fileURL": file:///private/var/mobile/Containers/Data/Application/F5ED7ED8-1972-4EE0-A0CF-0BCB5ABE5C4F/Documents/Api_requirements.docx, "fileType": "doc", "fileSize": "0.527648", "fileName": "Api_requirements.docx"]
+             */
+            guard let obj = SelectedFileVC.loadViewController() else {return}
+            guard let fileType = dict["fileType"] as? String else { return }
+            guard let fileURL = dict["fileURL"] as? URL else { return }
+
+            obj.fileType = "." + fileType
+            obj.userType = weakSelf?.userType
+            obj.fileContentType = fileType
+            obj.userId = weakSelf?.userId
+            obj.project_team_id = weakSelf?.project_team_id
+            obj.company_id = weakSelf?.company_id
+            obj.parent_id = weakSelf?.parent_id
+            var data = Data()
+            do {
+                data = try Data(contentsOf: fileURL)
+            } catch {
+                print("Problem while converting video URL to data")
+                return
+            }
+            
+            let size = Float(Double(data.count) / 1000.0)
+            if size <= 25000 {
+                DispatchQueue.main.async(execute: {
+                    obj.dataOfFile = data
+                    let navigationC = UINavigationController(rootViewController: obj)
+                    navigationC.barTintColor = UIColor(red: 86 / 255.0, green: 189 / 255.0, blue: 137 / 255.0, alpha: 1.0)
+                    weakSelf?.present(navigationC, animated: true, completion: {
+                        
+                    })
+                })
+                
+            } else {
+                DispatchQueue.main.async {
+                    Utility.showOkAlertOnRootViewController(message: "Max allowed size is 25 MB", alertTitle: APPNAME)
+                }
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        
     }
     
     @IBAction func tapCrossButton(_ sender: UIButton) {
@@ -147,13 +192,5 @@ extension SelectFileVC: UIViewControllerTransitioningDelegate, UIViewControllerA
             })
         }
     }
-}
-
-
-//MARK: ImagePicker Extension
-extension SelectFileVC{
-    
-   
-    
 }
 

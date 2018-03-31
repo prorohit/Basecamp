@@ -12,7 +12,7 @@ class SelectedFileVC: BaseVC {
     private static let kSTORYBOARDNAME = "DocsAndFiles"
     var projectTitle = "Atinder test"
     var fileType = "", fileName = "", fileSize = "",  fileContentType = ""
-    var dataOfVideoFile: Data = Data()
+    var dataOfFile: Data = Data()
     
     var userId: String?, userType: String?, company_id: String?, type: String?, project_team_id: String?, parent_id: String?
     
@@ -58,13 +58,40 @@ class SelectedFileVC: BaseVC {
             imageViewOfSelectedFile.image = image
             let imageData: Data = UIImagePNGRepresentation(image)!
             print("Total bytes \(imageData.count)")
-            let size = Float(Double(imageData.count) / 1000.0)
-            labelFileSize.text = "\(size) KB"
+            let size = Float(Double(imageData.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
         } else if fileContentType ==  FileContentType.VIDEO.rawValue {
             let image = arrOfImagesPassed[0]
+            fileContentType = "mov"
             imageViewOfSelectedFile.image = image
-            let size = Float(Double(dataOfVideoFile.count) / 1000.0)
-            labelFileSize.text = "\(size) KB"
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
+        } else if fileContentType == FileContentType.PDF.rawValue {
+            let image = UIImage(named: "pdf")
+            imageViewOfSelectedFile.image = image
+
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
+        } else if fileContentType == FileContentType.DOC.rawValue {
+            let image = UIImage(named: "word")
+            imageViewOfSelectedFile.image = image
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
+        } else if fileContentType == FileContentType.PPT.rawValue {
+            let image = UIImage(named: "file")
+            imageViewOfSelectedFile.image = image
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
+        } else if fileContentType == FileContentType.XLS.rawValue {
+            let image = UIImage(named: "file")
+            imageViewOfSelectedFile.image = image
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
+        } else if fileContentType == FileContentType.TEXT.rawValue {
+            let image = UIImage(named: "file")
+            imageViewOfSelectedFile.image = image
+            let size = Float(Double(dataOfFile.count) / 1000000.0)
+            labelFileSize.text = "\(size) MB"
         }
         
         let timestamp = NSDate().timeIntervalSince1970
@@ -96,6 +123,7 @@ class SelectedFileVC: BaseVC {
     
     @objc func tapUploadButton(_ sender: UIButton) {
         print("Upload files")
+        weak var weakSelf =  self
         guard let project_team_id = project_team_id else {return}
         guard let parent_id = parent_id else {return}
         guard let userId = userId else {return}
@@ -129,8 +157,9 @@ class SelectedFileVC: BaseVC {
                     })
                 
                 })
-            } else if fileContentType == FileContentType.VIDEO.rawValue {
-                NetworkManager.sharedInstance.uploadingBigDataUsingAlamofire(fileKeyName: "doc", urlString: DEVSERVERBASEURL + APIEndPoints.DOCUPLAOD.rawValue, arrOfData: [dataOfVideoFile], headers: ["token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6InBlZXJidWNrZXQifQ.VFpyg8qiBasCFTBU9IttVeiuibns5lJorSRCetFWGw8"], parameters: dictParams, completionHandler: { (response, error) in
+                weakSelf?.dismiss(animated: true, completion: nil)
+            } else {
+                NetworkManager.sharedInstance.uploadingBigDataUsingAlamofire(fileKeyName: "doc", fileExt: fileContentType,urlString: DEVSERVERBASEURL + APIEndPoints.DOCUPLAOD.rawValue, arrOfData: [dataOfFile], headers: ["token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6InBlZXJidWNrZXQifQ.VFpyg8qiBasCFTBU9IttVeiuibns5lJorSRCetFWGw8"], parameters: dictParams, completionHandler: { (response, error) in
                     DispatchQueue.main.async(execute: {
                         if let res = response {
                             print(res)
@@ -143,12 +172,11 @@ class SelectedFileVC: BaseVC {
                         
                     })
                 })
+                weakSelf?.dismiss(animated: true, completion: nil)
+                
             }
-            
-            
-            
         } else {
-            
+                Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: APPNAME)
         }
     }
     @objc func tapCrossButton(_ sender: UIButton) {

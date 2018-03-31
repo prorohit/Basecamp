@@ -20,6 +20,13 @@ class ChooseFileVC: BaseVC {
     @IBOutlet weak var btnXLS: UIButton!
     @IBOutlet weak var btnTXT: UIButton!
     let underLineColor = UIColor(red: 86 / 255.0, green: 189 / 255.0, blue: 137 / 255.0, alpha: 1.0)
+    
+    
+    var globalClosure = {(dict: [String: Any]) -> Void in }
+    
+    func sendCallBackWithDictionary(completionHandler: @escaping ([String: Any]) -> Void) {
+        globalClosure = completionHandler
+    }
 
     @IBOutlet weak var tableViewDocs: UITableView!
     

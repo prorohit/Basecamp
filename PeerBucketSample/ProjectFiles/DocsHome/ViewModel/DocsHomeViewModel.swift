@@ -117,7 +117,7 @@ class DocsHomeViewModel: NSObject {
                 }
             })
         } else {
-            Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: INTERNETCONNECTIVITY)
+            Utility.showOkAlertOnRootViewController(message: APPNAME, alertTitle: APPNAME)
         }
     }
 }

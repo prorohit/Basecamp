@@ -11,11 +11,12 @@ import Foundation
 
 enum FileContentType: String {
     case PDF = "pdf"
-    case WORD = "word"
+    case DOC = "doc"
     case IMAGE = "image"
     case VIDEO = "video"
     case PPT = "ppt"
-    case OTHERS = "others"
+    case XLS = "xls"
+    case TEXT = "txt"
 }
 
 enum DOCUMENTDIRECTORYFOLDERNAME: String {

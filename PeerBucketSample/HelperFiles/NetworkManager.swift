@@ -128,7 +128,7 @@ public class NetworkManager {
         
     }
     
-    public func uploadingBigDataUsingAlamofire(fileKeyName: String, urlString: String, arrOfData:[Data], headers: [String: String]?, parameters: Dictionary<String, Any>, completionHandler:@escaping (NSDictionary?, NSError?) -> Void) {
+    public func uploadingBigDataUsingAlamofire(fileKeyName: String, fileExt: String, urlString: String, arrOfData:[Data], headers: [String: String]?, parameters: Dictionary<String, Any>, completionHandler:@escaping (NSDictionary?, NSError?) -> Void) {
         
         var newHeader: HTTPHeaders?
         if let headers = headers {
@@ -139,7 +139,7 @@ public class NetworkManager {
             // import image to request
             for data in arrOfData {
                     //                    multipartFormData.append(imageData!, withName: "\(imageParamName)[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-                    multipartFormData.append(data, withName: "\(fileKeyName)", fileName: "\(Date().timeIntervalSince1970).mov", mimeType: "video/mov")
+                    multipartFormData.append(data, withName: "\(fileKeyName)", fileName: "\(Date().timeIntervalSince1970)." + fileExt, mimeType: "video/mov")
                 
             }
             for (key, value) in parameters {

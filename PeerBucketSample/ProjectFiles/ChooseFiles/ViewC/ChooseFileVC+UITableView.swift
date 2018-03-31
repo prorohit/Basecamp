@@ -33,10 +33,16 @@ extension ChooseFileVC: UITableViewDelegate, UITableViewDataSource {
         if let fileSize = dict[viewModelChooseFile.K_FILESIZE] as? String {
             cell.labelFileSize.text = fileSize + " MB"
         }
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dict = viewModelChooseFile.arrOfFileInfo[indexPath.row]
+        globalClosure(dict)
     }
 }

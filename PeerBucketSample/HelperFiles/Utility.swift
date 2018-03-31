@@ -140,19 +140,5 @@ class Utility: NSObject {
         }
     }
     
-    class func createFolderInDocumentDirectory(withName folderName: String) {
-            let filemgr = FileManager.default
-            let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
-            let docsURL = dirPaths[0]
-            let newDir = docsURL.appendingPathComponent(folderName).path
-        
-    
-            do {
-                try filemgr.createDirectory(atPath: newDir, withIntermediateDirectories: true, attributes: nil)
-                print("\(folderName)-Folder created successfully with path= \(newDir)")
-            } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
-        }
-    }
 
 }

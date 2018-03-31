@@ -51,6 +51,10 @@ extension DocsHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 cellFile.imageViewFileType.image = UIImage(named: "video")
             } else if model.ext == ".doc" || model.ext == ".docx" {
                 cellFile.imageViewFileType.image = UIImage(named: "word")
+            } else if model.ext == ".pdf" {
+                cellFile.imageViewFileType.image = UIImage(named: "pdf")
+            } else {
+                cellFile.imageViewFileType.image = UIImage(named: "file")
             }
             return cellFile
         }

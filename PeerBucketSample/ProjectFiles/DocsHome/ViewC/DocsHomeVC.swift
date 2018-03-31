@@ -35,7 +35,9 @@ class DocsHomeVC: BaseVC {
     }
     
     @objc func methodOfReceivedNotification (_ noti: Notification) {
-       callGetFilesFoldersAPI()
+        FileManagerHelper.deleteAllFilesFromFolderInDocumentDirectory(folderName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
+        FileManagerHelper.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
+        callGetFilesFoldersAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {

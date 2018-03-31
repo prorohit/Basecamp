@@ -18,11 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(_:)), name: NSNotification.Name(rawValue: "notificationIdentifier"), object: nil)
         
-//        FileManagerHelper.deleteAllFilesInDocumentDirectory()
-        Utility.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
-        Utility.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.DOWNLOADS.rawValue)
 
-//        saveImageDocumentDirectory()
+        FileManagerHelper.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
+
         return true
     }
     
@@ -37,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc func methodOfReceivedNotification (_ noti: Notification) {
         FileManagerHelper.deleteAllFilesFromFolderInDocumentDirectory(folderName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
+        FileManagerHelper.createFolderInDocumentDirectory(withName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue)
+
         guard let info = noti.userInfo else {return}
         guard  let message = info["message"] as? String else {
             return

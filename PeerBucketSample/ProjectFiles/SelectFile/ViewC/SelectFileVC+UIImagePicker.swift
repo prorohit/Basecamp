@@ -100,29 +100,31 @@ extension SelectFileVC: UIImagePickerControllerDelegate, UINavigationControllerD
                         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
 
-                        do {
-                            let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
-                            print(fileURLs)
-                            do {
-                                for (_ , path) in fileURLs.enumerated() {
-                                    try fileManager.removeItem(at: path)
-                                }
-                            } catch {
-                                print("Problem while converting video URL to data")
-                                return
-                            }
-                        } catch {
-
-                        }
+//                        do {
+//                            let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+//                            print(fileURLs)
+//                            do {
+//                                for (_ , path) in fileURLs.enumerated() {
+//                                    try fileManager.removeItem(at: path)
+//                                }
+//                            } catch {
+//                                print("Problem while converting video URL to data")
+//                                return
+//                            }
+//                        } catch {
+//
+//                        }
                         
                         uniqueVideoID = uniqueID  + "VIDEO.MOV"
                         let docDataPath = documentsDirectory.appendingPathComponent(uniqueVideoID) as String
-                        do {
-                            try data.write(to: URL(fileURLWithPath: docDataPath), options: [])
-                        } catch let e {
-                            print(e.localizedDescription)
-                            return
-                        }
+                        FileManagerHelper.saveFileInCustomFolderInsideDocumentDirectory(folderName: DOCUMENTDIRECTORYFOLDERNAME.UPLOADS.rawValue, fileName: uniqueVideoID, data: data)
+
+//                        do {
+////                            try data.write(to: URL(fileURLWithPath: docDataPath), options: [])
+//                        } catch let e {
+//                            print(e.localizedDescription)
+//                            return
+//                        }
                         //This creates a thumbnail image.
                         let assetImageGenerate = AVAssetImageGenerator(asset: asset)
                         assetImageGenerate.appliesPreferredTrackTransform = true
@@ -135,8 +137,7 @@ extension SelectFileVC: UIImagePickerControllerDelegate, UINavigationControllerD
                         let size = Float(Double(data.count) / 1000.0)
                         
                         if size <= 25000 {
-                            obj.dataOfVideoFile = data
-                            
+                            obj.dataOfFile = data
                             let navigationC = UINavigationController(rootViewController: obj)
                             navigationC.barTintColor = UIColor(red: 86 / 255.0, green: 189 / 255.0, blue: 137 / 255.0, alpha: 1.0)
                             weakSelf?.present(navigationC, animated: true, completion: {
